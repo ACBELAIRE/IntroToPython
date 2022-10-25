@@ -1,3 +1,6 @@
+from pickle import TRUE
+
+
 class Person:
     def __init__(self,in_name,in_age):
         self.name = in_name
@@ -9,8 +12,31 @@ class Person:
 """
 Add Customer Class Here
 """
-
-
+class Customer(Person):
+    def __init__(self, in_name, in_age):
+        super().__init__(in_name, in_age)
+        self.hasTicket = False
+        self.inZoo     = False
+    
+    def buy_ticket(self):
+        self.hasTicket = True
+        if (self.age >= 18):
+            print("Adult Ticket Purchased")
+        else:
+            print("Child Ticket Purchased")
+    
+    def enter_zoo(self, zoo):
+        if self.hasTicket:
+            self.hasTicket = False
+            zoo.add_customer(self.name)
+            self.inZoo = True
+        else:
+            print("Please purchase ticket!")
+    
+    def exit_zoo(self,Zoo):
+        if self.inZoo:
+            self.inZoo = False
+            Zoo.remove_customer(self.name)
 
 class Zoo:
     def __init__(self,name="Local Zoo"):
@@ -56,6 +82,35 @@ class Animal:
 """
 Add Animal Subclasses Here
 """
+class  Fish(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+    
+    def make_noise(self):
+        print ("Bloop Bloop Bloop")
+    
+    def eat_food(self):
+        print ("Fish eat Flakes")
+
+class Bird(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+    
+    def make_noise(self):
+        print("Tweet Tweet Tweet")
+    
+    def eat_food(self):
+        print("Birds Eat Seeds")
+
+class Chimp(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+    
+    def make_noise(self):
+        print("OPA OPA OPA")
+    
+    def eat_food(self):
+        print("Chimps eat bananas")
 
 
 

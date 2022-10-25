@@ -6,7 +6,10 @@ returns {'a': 1, 'b.i': 2, 'b.j': 3, 'c': 4}
 '''
 
 def flatten_dict(d):
-    pass
+    result = dict()
+    for i in d.keys():
+        if type(d[i]) == dict:
+            
 
 print(flatten_dict({'a': 1, 'b': {'i': 2, 'j': 3}, 'c': 4}))
 
